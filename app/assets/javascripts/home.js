@@ -8,12 +8,12 @@ app.controller('PresentItController',
 
     $scope.upload = function () {
         uploadManager.upload();
-        $scope.files = [];
     };
 
     $rootScope.$on('fileAdded', function (e, call) {
         $scope.files.push(call);
         $scope.$apply();
+        $scope.upload();
     });
 
     $rootScope.$on('uploadProgress', function (e, call) {
@@ -23,6 +23,7 @@ app.controller('PresentItController',
 
     $rootScope.$on('presentationSaved', function(e, url){
         $scope.url = url;
+        $scope.files = [];
     });
 }]);
 

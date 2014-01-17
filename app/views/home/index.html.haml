@@ -1,33 +1,53 @@
-%h1 Present It!
+.row.top
+  .col-sm-3
+  .col-sm-6
+    .padded
+      %h1#title Present it !
 
-%p Upload your markdown file and we will make a presentation out of it.
-%p You can then download it to your computer. Or share the link with your audience.
+      %p Upload a markdown file and we will make a slide deck out of it.
+      %p You can then download it to your computer. Or share the link with your audience.
 
-%p This is an {{"angular"}} app.
+      .control-group
+        .controls
+          %span.btn.btn-success.fileinput-button
+            %i.glyphicon.glyphicon-plus
+            %span Choose file
+            %input{type: "file", name: "file", 'data-url' => "/upload", multiple:"", upload:""}
 
-.control-group
-  .controls
-    %span.btn.btn-success.fileinput-button
-      %i.icon-plus
-        %input{type: "file", name: "file", 'data-url' => "/upload", multiple:"", upload:""}
-        %span Choose file
+  .col-sm-3
 
-%div{'ng-repeat' => "file in files"}
-  {{file}}
+.row.bottom
+  .col-sm-3
+  .col-sm-6
+    .padded
+      .results
+        %div{'ng-repeat' => "file in files"}
+          Preparing {{file}}...
 
-.progress{'ng-show' => 'percentage'}
-  .bar{'style' => 'width: {{percentage}}%'}
-    {{percentage}} %
+        .progress{'ng-show' => 'percentage'}
+          .bar{'style' => 'width: {{percentage}}%'}
 
-%button{'type' => "submit", 'class' => "btn btn-primary pull-left", 'ng-click' => "upload()", 'ng-show' => 'files.length'}
-  Upload
+        %div{'ng-show' => 'url'}
+          %h2 Your presentation is ready
+          %p<
+            %a{'href' => '{{url}}'} Click here 
+            to see your presentation.
 
-%div{'ng-show' => 'url'}
-  %h2 Your presentation is ready
-  %p<
-    %a{'href' => '{{url}}'} Here is your presentation
+          %br
+          %p<
+            Save this link for later or share it with your audience:
+            %a{'href' => '{{url}}'}
+              %span.permlink
+                {{url}}
 
-  %p<
-    Save this link for later or share it with your audience:
-    %span.permlink
-      {{url}}
+        %hr.footer-line
+
+        .footer
+          %p Built in January 2014
+          %p
+            View source on
+            %a{'href' => 'https://github.com/matstc/present-it'}
+              Github
+
+
+  .col-sm-3
