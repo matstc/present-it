@@ -1,0 +1,23 @@
+%h1 Present It!
+
+%p Upload your markdown file and we will make a presentation out of it.
+%p You can then download it to your computer. Or share the link with your audience.
+
+%p This is an {{"angular"}} app.
+
+.control-group
+  .controls
+    %span.btn.btn-success.fileinput-button
+      %i.icon-plus
+        %input{type: "file", name: "file", 'data-url' => "/upload", multiple:"", upload:""}
+        %span Choose file
+
+%div{'ng-repeat' => "file in files"}
+  {{file}}
+
+.progress{'ng-show' => 'percentage'}
+  .bar{'style' => 'width: {{percentage}}%'}
+    {{percentage}} %
+
+%button{'type' => "submit", 'class' => "btn btn-primary pull-left", 'ng-click' => "upload()", 'ng-show' => 'files.length'}
+  Upload
