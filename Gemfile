@@ -6,6 +6,11 @@ gem 'rails', '4.0.2'
 
 gem 'haml-rails'
 
+gem 'carrierwave'
+
+gem 'markdown_presenter'
+gem 'kramdown'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -30,6 +35,10 @@ gem 'jbuilder', '~> 1.2'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :development do
+  gem 'pry'
 end
 
 # Use ActiveModel has_secure_password

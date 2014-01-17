@@ -1,6 +1,7 @@
 PresentIt::Application.routes.draw do
-  get "home/index"
-  post "/upload", controller: "home", action: "upload", as: 'upload'
+  get 'home/index'
+  post '/upload', controller: 'home', action: 'upload', as: 'upload'
+  get '/presentations/:id', controller: 'home', action: 'show', as: 'presentation'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

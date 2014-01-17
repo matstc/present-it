@@ -20,6 +20,10 @@ app.controller('PresentItController',
         $scope.percentage = call;
         $scope.$apply();
     });
+
+    $rootScope.$on('presentationSaved', function(e, url){
+        $scope.url = url;
+    });
 }]);
 
 app.factory('uploadManager', function ($rootScope) {
@@ -51,7 +55,7 @@ app.factory('uploadManager', function ($rootScope) {
     };
 });
 
-app.directive('upload', ['uploadManager', function factory(uploadManager) {
+app.directive('upload', ['$rootScope', 'uploadManager', function factory($rootScope, uploadManager) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
@@ -65,6 +69,8 @@ app.directive('upload', ['uploadManager', function factory(uploadManager) {
                     uploadManager.setProgress(progress);
                 },
                 done: function (e, data) {
+                    var url = JSON.parse(data.result).url;
+                    $rootScope.$broadcast('presentationSaved', url);
                     uploadManager.setProgress(0);
                 }
             });

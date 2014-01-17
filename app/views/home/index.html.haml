@@ -21,3 +21,13 @@
 
 %button{'type' => "submit", 'class' => "btn btn-primary pull-left", 'ng-click' => "upload()", 'ng-show' => 'files.length'}
   Upload
+
+%div{'ng-show' => 'url'}
+  %h2 Your presentation is ready
+  %p<
+    %a{'href' => '{{url}}'} Here is your presentation
+
+  %p<
+    Save this link for later or share it with your audience:
+    %span.permlink
+      {{url}}
