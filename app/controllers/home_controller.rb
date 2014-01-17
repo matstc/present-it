@@ -3,6 +3,14 @@ class HomeController < ApplicationController
   end
 
   def upload
+    unless params[:file].original_filename.end_with? ".md" or
+           params[:file].original_filename.end_with? ".markdown"
+
+      @error = "Sorry. We only support markdown files."
+      render layout: false, status: 400
+      return
+    end
+
     hash = "#{SecureRandom.hex 4}.md"
     params[:file].original_filename = hash
     uploader = PresentationUploader.new

@@ -5,12 +5,14 @@ app.controller('PresentItController',
     function ($scope, $rootScope, uploadManager) {
     $scope.files = [];
     $scope.percentage = 0;
+    $scope.error = '';
 
     $scope.upload = function () {
         uploadManager.upload();
     };
 
     $rootScope.$on('fileAdded', function (e, call) {
+        $scope.error = null;
         $scope.files.push(call);
         $scope.$apply();
         $scope.upload();
@@ -24,6 +26,13 @@ app.controller('PresentItController',
     $rootScope.$on('presentationSaved', function(e, url){
         $scope.url = url;
         $scope.files = [];
+    });
+
+    $rootScope.$on('uploadFailed', function(e, error){
+        $scope.files = [];
+        $scope.percentage = 0;
+        $scope.error = error;
+        $scope.$apply();
     });
 }]);
 
@@ -74,6 +83,9 @@ app.directive('upload', ['$rootScope', 'uploadManager', function factory($rootSc
                     $rootScope.$broadcast('presentationSaved', url);
                     uploadManager.setProgress(0);
                 }
+            }).on('fileuploadfail', function(e, data){
+              var error = JSON.parse(data.response().jqXHR.responseText).error;
+              $rootScope.$broadcast('uploadFailed', error);
             });
         }
     };

@@ -1,1 +1,5 @@
-{"url": "<%= @url %>"}
+<% if @error.blank? %>
+  {"url": "<%= @url %>"}
+<% else %>
+  {"error" : "<%= @error %>"}
+<% end %>

@@ -27,6 +27,9 @@
         .progress{'ng-show' => 'percentage'}
           .bar{'style' => 'width: {{percentage}}%'}
 
+        .alert.alert-danger{'ng-show' => 'error'}
+          {{error}}
+
         %div{'ng-show' => 'url'}
           %h2 Your presentation is ready
           %p<
