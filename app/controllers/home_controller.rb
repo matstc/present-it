@@ -21,7 +21,10 @@ class HomeController < ApplicationController
   end
 
   def show
-    params[:format] = params[:format] || "md" # fixes strange bug related to URL forwarding
+    if params[:format].nil?
+      redirect_to "#{request.url}.md" # fixes strange bug related to URL forwarding
+      return
+    end
 
     uploader = PresentationUploader.new
     uploader.retrieve_from_store! "#{params[:id]}.#{params[:format]}"
