@@ -21,6 +21,8 @@ class HomeController < ApplicationController
   end
 
   def show
+    params[:format] = params[:format] || "md" # fixes strange bug related to URL forwarding
+
     uploader = PresentationUploader.new
     uploader.retrieve_from_store! "#{params[:id]}.#{params[:format]}"
     out = present('Present It', content_of(uploader.file.file))
