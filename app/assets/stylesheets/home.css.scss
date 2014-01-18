@@ -4,7 +4,6 @@ input[type=file] {height:65px;}
 .permlink {font-family:monospace; font-size:120%;}
 *, html, body {font-size:20px; font-family:Ubuntu;}
 .top {background-color:#FFDD94; border-bottom:6px solid #B28118; padding-bottom:30px;}
-h1#title {margin-top:120px; font-size:400%; letter-spacing:3px;white-space:nowrap;}
 h1, h2 {font-family: 'Luckiest Guy', cursive;}
 .fileinput-button {width:260px; height:60px; padding-top:11px; margin:30px 0;}
 .fileinput-button span {font-size:24px;}
@@ -13,6 +12,5 @@ h1, h2 {font-family: 'Luckiest Guy', cursive;}
 .footer p, .footer a {font-size:14px;}
 .footer p {line-height:12px;}
 .padded {padding:8px;}
-@media (max-width: 620px) {
-  h1#title {font-size:300%; margin-top:60px;}
-}
+h1#title {margin-top:60px; font-size:200%; letter-spacing:3px;white-space:nowrap;}
+@media (min-width: 620px) { h1#title {font-size:400%; margin-top:120px;} }
