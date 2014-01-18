@@ -7,7 +7,7 @@ input[type=file] {height:65px;}
 h1, h2 {font-family: 'Luckiest Guy', cursive;}
 .fileinput-button {width:260px; height:60px; padding-top:11px; margin:10px 0;}
 .fileinput-button span {font-size:24px;}
-.results {margin-top:60px; margin-bottom:20px;}
+.results {margin-top:20px; margin-bottom:20px;}
 .footer-line {margin-top:50px;}
 .footer p, .footer a {font-size:14px;}
 .footer p {line-height:12px;}
@@ -17,4 +17,5 @@ h1#title {margin-top:30px; font-size:250%; letter-spacing:3px;white-space:nowrap
   h1#title {font-size:400%; margin-top:120px;}
   .top {padding-bottom:30px;}
   .fileinput-button {margin:30px 0;}
+  .results {margin-top:60px;}
 }
