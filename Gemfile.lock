@@ -62,7 +62,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    markdown_presenter (0.7.0)
+    markdown_presenter (0.7.1)
       haml
       kramdown
       mime-types
